@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 # Load the JSON data into a Python object
-with open("5klastjobs", "r") as f:
+with open("jobs.json", "r") as f:
     data = json.load(f)
 
 # Convert the data into a pandas DataFrame
@@ -38,9 +38,11 @@ checkpoint_path = "training_1/cp.ckpt"
 checkpoint_dir = os.path.dirname(checkpoint_path)
 if not os.path.exists(checkpoint_dir):
     os.makedirs(checkpoint_path)
-if(len(os.listdir(checkpoint_dir)) > 0):
+if len(os.listdir(checkpoint_dir)) > 0:
+    print("loading weights...")
     latest = tf.train.latest_checkpoint(checkpoint_dir)
     model.load_weights(latest)
+    print("Weights loaded!")
 
 # Create a callback that saves the model's weights
 cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
