@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu
+FROM tensorflow/tensorflow
 WORKDIR /estimator
 
 COPY requirements.txt requirements.txt
