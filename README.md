@@ -1,5 +1,5 @@
 # estimator
-Construction estimation neural network tool that allows users to enter data about a project, and recieve an accurate big based off of empirical data
+Construction estimation neural network tool that allows users to enter data about a project, and recieve an accurate bid based off of empirical data
 
 How to use:
 
