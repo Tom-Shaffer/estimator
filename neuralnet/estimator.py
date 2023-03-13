@@ -52,12 +52,15 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
 # Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error')
 
-# Train the model
-model.fit(X_train, 
-            y_train, 
-            epochs=1000,
-            batch_size=32,
-            callbacks=[cp_callback])
+# # Train the model
+# model.fit(X_train, 
+#             y_train, 
+#             epochs=1,
+#             batch_size=32,
+#             callbacks=[cp_callback])
+
+# Save the model
+model.save("estimatorModel")
 
 # Evaluate the model
 loss = model.evaluate(X_test, y_test, verbose=2)
