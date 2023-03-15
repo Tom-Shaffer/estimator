@@ -16,7 +16,6 @@ y = df["budget"]
 
 # Encode categorical variablesip3 install pandas
 X = pd.get_dummies(X, columns=["building_type", "efficiency_level", "hvac_type"])
-
 # Split the data into train and test sets
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
@@ -52,12 +51,12 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
 # Compile the model
 model.compile(optimizer='adam', loss='mean_squared_error')
 
-# # Train the model
-# model.fit(X_train, 
-#             y_train, 
-#             epochs=1,
-#             batch_size=32,
-#             callbacks=[cp_callback])
+# Train the model
+model.fit(X_train, 
+             y_train, 
+             epochs=10,
+             batch_size=32,
+             callbacks=[cp_callback])
 
 # Save the model
 model.save("estimatorModel")
