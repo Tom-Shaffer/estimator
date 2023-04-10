@@ -14,8 +14,13 @@ df = pd.DataFrame(data)
 X = df.drop("budget", axis=1)
 y = df["budget"]
 
-# Encode categorical variablesip3 install pandas
+# Encode categorical variables
 X = pd.get_dummies(X, columns=["building_type", "efficiency_level", "hvac_type"])
+
+# Convert data types to int
+X = X.astype(int)
+y = y.astype(int)
+
 # Split the data into train and test sets
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
