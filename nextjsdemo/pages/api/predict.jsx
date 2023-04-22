@@ -2,6 +2,8 @@ import * as tf from '@tensorflow/tfjs'
 import '@tensorflow/tfjs-backend-webgl'
 import { useState } from 'react'
 
+const modelJSONPath = 'estimator/model.json'
+
 export default function Home() {
   const [buildingArea, setBuildingArea] = useState('');
   const [buildingVolume, setBuildingVolume] = useState('');
@@ -14,11 +16,22 @@ export default function Home() {
   async function handlePredictClick(event) {
     event.preventDefault(); // prevent form submission from refreshing the page
 
-    const model = await tf.loadLayersModel('/tfjs_model/model.json')
+    const model = await tf.loadGraphModel(modelJSONPath);
+    console.log(model.inputs[0].shape);  // print input shape
     const input = tf.tensor2d([
-      [Number(document.getElementById('feature1').value),
-       Number(document.getElementById('feature2').value),
-       Number(document.getElementById('feature3').value),
+      [Number(buildingArea),
+       Number(buildingVolume),
+       Number(deadlineMonths),
+       Number(buildingType == "commercial"),
+       Number(buildingType == "industrial"),
+       Number(buildingType == "residential"),
+       Number(efficiencyLevel == "high"),
+       Number(efficiencyLevel == "low"),
+       Number(efficiencyLevel == "medium"),
+       Number(hvacType == "boiler"),
+       Number(hvacType == "forced air"),
+       Number(hvacType == "geothermal"),
+       Number(hvacType == "heat pump")
       ]
     ])
 
