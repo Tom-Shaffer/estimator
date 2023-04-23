@@ -6,7 +6,10 @@ import os
 import json
 
 def generate_random_decimal():
-    return random.normalvariate(1, 0.1)
+    # Generate a random number with a normal distribution
+    x = random.gauss(0, 0.4)
+    # Scale the result to fit between 0 and 1
+    return (x / 5) + 0.5
 
 def generate_cubic_feet(squareFeet: int):
     cubicFeet = round(math.sqrt(squareFeet)**3,0)
@@ -25,10 +28,10 @@ def generate_test_row(currentData: dict(), scalingFactor: float):
     else:
         currentData['building_type'].append(random.choice(['residential', 'commercial']))
 
-    if scalingFactor > .9:
+    if scalingFactor > .6:
         currentData['efficiency_level'].append('high')
         currentData['hvac_type'].append('geothermal')
-    elif scalingFactor > .5:
+    elif scalingFactor > .4:
         currentData['efficiency_level'].append('medium')
         currentData['hvac_type'].append('heat pump')
     else:
