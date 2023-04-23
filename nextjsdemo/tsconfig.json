@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/predict.jsx", "pages/api/predict.jsx", "pages/api/predict.js", "pages/api/predict.js", "pages/index.jsx", "pages/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/predict.jsx", "pages/components/predict.jsx", "pages/api/predict.js", "pages/api/predict.js", "pages/index.jsx", "pages/index.jsx"],
   "exclude": ["node_modules"]
 }

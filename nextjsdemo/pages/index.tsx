@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import Predict from '../pages/api/predict'
+import Predict from './components/predict'
 
 const inter = Inter({ subsets: ['latin'] })
 
