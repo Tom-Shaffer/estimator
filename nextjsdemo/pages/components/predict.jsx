@@ -1,17 +1,30 @@
 import * as tf from '@tensorflow/tfjs'
 import '@tensorflow/tfjs-backend-webgl'
-import { useState } from 'react'
+import { useState, useEffect }from 'react'
+import Chart from './chart'
 
 const modelJSONPath = 'estimator/model.json'
+const pathToDataSetJson = 'estimator/jobs.json'
 
-export default function Home() {
+export default function Predict() {
   const [buildingArea, setBuildingArea] = useState('');
   const [buildingVolume, setBuildingVolume] = useState('');
   const [deadlineMonths, setDeadlineMonths] = useState('');
   const [buildingType, setBuildingType] = useState('');
   const [efficiencyLevel, setEfficiencyLevel] = useState('');
   const [hvacType, setHvacType] = useState('');
+
   const [prediction, setPrediction] = useState('');
+  const [jobsJson, setJobsJson] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(pathToDataSetJson);
+      const data = await response.json();
+      setJobsJson(data);
+    }
+    fetchData();
+  }, []);
   
   async function handlePredictClick(event) {
     event.preventDefault(); // prevent form submission from refreshing the page
@@ -38,8 +51,6 @@ export default function Home() {
     const output = model.predict(input)
     setPrediction(output.dataSync()[0])
   }
-
-  
 
   return (
     <div>
@@ -116,7 +127,9 @@ export default function Home() {
       <br />
         <button type="submit">Predict cost</button>
       </form>
-      {prediction && <p>Predicted construction cost: ${prediction.toFixed(2)}</p>}
+      {prediction && 
+      <p>Predicted construction cost: ${prediction.toFixed(2)}</p>}
+      <Chart examples={jobsJson}/>
     </div>
   );
   
