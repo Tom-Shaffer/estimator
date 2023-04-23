@@ -21,3 +21,16 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.chart-container {
+  width: 75%;
+  height: 100vh; /* set the chart container to take up the full height of the viewport */
+  float: left; /* float the chart container to the left */
+}
+
+.input-container {
+  width: 25%;
+  height: 100vh; /* set the input container to take up the full height of the viewport */
+  float: right; /* float the input container to the right */
+}
+
