@@ -22,16 +22,16 @@ export default function Home() {
       [Number(buildingArea),
        Number(buildingVolume),
        Number(deadlineMonths),
-       Number(buildingType == "commercial"),
-       Number(buildingType == "industrial"),
-       Number(buildingType == "residential"),
-       Number(efficiencyLevel == "high"),
-       Number(efficiencyLevel == "low"),
-       Number(efficiencyLevel == "medium"),
-       Number(hvacType == "boiler"),
-       Number(hvacType == "forced air"),
-       Number(hvacType == "geothermal"),
-       Number(hvacType == "heat pump")
+       Number(buildingType === "industrial"),
+       Number(buildingType === "commercial"),
+       Number(buildingType === "residential"),
+       Number(efficiencyLevel === "high"),
+       Number(efficiencyLevel === "medium"),
+       Number(efficiencyLevel === "low"),
+       Number(hvacType === "boiler"),
+       Number(hvacType === "forced air"),
+       Number(hvacType === "heat pump"),
+       Number(hvacType === "geothermal")
       ]
     ])
 
@@ -104,13 +104,13 @@ export default function Home() {
       </label>
       <br />
       <label>
-        <input type="radio" name="hvac_type" value="geothermal" checked={hvacType === "geothermal"} onChange={() => setHvacType("geothermal")} />
-        Geothermal
+        <input type="radio" name="hvac_type" value="heat pump" checked={hvacType === "heat pump"} onChange={() => setHvacType("heat pump")} />
+        Heat pump
       </label>
       <br />
       <label>
-        <input type="radio" name="hvac_type" value="heat pump" checked={hvacType === "heat pump"} onChange={() => setHvacType("heat pump")} />
-        Heat pump
+        <input type="radio" name="hvac_type" value="geothermal" checked={hvacType === "geothermal"} onChange={() => setHvacType("geothermal")} />
+        Geothermal
       </label>
       <br />
       <br />
