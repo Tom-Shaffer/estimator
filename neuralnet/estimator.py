@@ -15,7 +15,9 @@ X = df.drop("budget", axis=1)
 y = df["budget"]
 
 # Encode categorical variables
+desired_input_order = ['building_area', 'building_volume', 'deadline_months', 'building_type_industrial', 'building_type_commercial', 'building_type_residential', 'efficiency_level_high', 'efficiency_level_medium', 'efficiency_level_low', 'hvac_type_forced air', 'hvac_type_boiler', 'hvac_type_heat pump', 'hvac_type_geothermal']
 X = pd.get_dummies(X, columns=["building_type", "efficiency_level", "hvac_type"])
+X = X.reindex(columns=desired_input_order)
 
 # Convert data types to int
 X = X.astype(int)
@@ -35,7 +37,6 @@ model = tf.keras.Sequential()
 model.add(normalizer)
 model.add(tf.keras.layers.Dense(units=64, activation='relu', input_shape=(X_train.shape[1],)))
 model.add(tf.keras.layers.Dense(units=1))
-
 
 # Retrieve latest model data
 checkpoint_path = "training_1/cp.ckpt"
@@ -59,8 +60,8 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 # Train the model
 model.fit(X_train, 
              y_train, 
-             epochs=100,
-             batch_size=32,
+             epochs=1000,
+             batch_size=16,
              callbacks=[cp_callback])
 
 # Save the model
