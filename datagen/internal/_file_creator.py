@@ -5,11 +5,11 @@ import math
 import os
 import json
 
-from _construction_project_generator import _gen_area, _gen_vol, _gen_deadline, _gen_buildtype, _gen_efficiency, _gen_hvac_type
+from internal._construction_project_generator import _gen_area, _gen_vol, _gen_deadline, _gen_buildtype, _gen_efficiency, _gen_hvac_type
 
 def _generate_test_row(currentData: dict()):
-    budget = math.floor(random.uniform(1,50))
     
+    budget = math.floor(random.uniform(1000,10000)) * (abs(random.gauss(0, .75)) + 1)
     build_type = _gen_buildtype()
     efficiency = _gen_efficiency(build_type)
     hvac_type = _gen_hvac_type(build_type)
@@ -17,13 +17,13 @@ def _generate_test_row(currentData: dict()):
     deadline = _gen_deadline(build_type,area)
     vol = _gen_vol(area)
 
-    currentData['building_type'].append(build_type)
-    currentData['building_area'].append(area)
-    currentData['building_volume'].append(vol)
-    currentData['deadline_months'].append(deadline)
-    currentData['budget'].append(budget)
-    currentData['efficiency_level'].append(efficiency)
-    currentData['hvac_type'].append(hvac_type)
+    currentData['building_type'].append(str(build_type))
+    currentData['building_area'].append(str(area))
+    currentData['building_volume'].append(str(vol))
+    currentData['deadline_months'].append(str(deadline))
+    currentData['budget'].append(str(budget))
+    currentData['efficiency_level'].append(str(efficiency))
+    currentData['hvac_type'].append(str(hvac_type))
 
     return currentData
 
