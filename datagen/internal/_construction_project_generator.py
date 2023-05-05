@@ -14,7 +14,9 @@ def _gen_area(buildingType: StrEnum, budget: int) -> int:
         return
 
 def _gen_vol(sqFootage: int) -> int:
-    return
+    sqrt_number = math.sqrt(sqFootage)
+    volume = sqrt_number ** 3
+    return volume
 
 def _gen_deadline(buildingType: StrEnum, sqFootage: int) -> int:
     if buildingType == building.residential:
