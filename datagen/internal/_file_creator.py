@@ -9,19 +9,19 @@ from _construction_project_generator import _gen_area, _gen_vol, _gen_deadline, 
 
 def _generate_test_row(currentData: dict()):
     budget = math.floor(random.uniform(1,50))
-
-    area = _gen_area()
-    vol = _gen_vol()
-    deadline = _gen_deadline()
+    
     build_type = _gen_buildtype()
-    efficiency = _gen_efficiency()
-    hvac_type = _gen_hvac_type()
+    efficiency = _gen_efficiency(build_type)
+    hvac_type = _gen_hvac_type(build_type)
+    area = _gen_area(build_type,budget)
+    deadline = _gen_deadline(build_type,area)
+    vol = _gen_vol(area)
 
+    currentData['building_type'].append(build_type)
     currentData['building_area'].append(area)
     currentData['building_volume'].append(vol)
     currentData['deadline_months'].append(deadline)
     currentData['budget'].append(budget)
-    currentData['building_type'].append(build_type)
     currentData['efficiency_level'].append(efficiency)
     currentData['hvac_type'].append(hvac_type)
 
