@@ -1,9 +1,9 @@
-from enum import StrEnum
+from enum import Enum
 import random
 from enums.constructionEnums import building, hvac, efficiency
 import math
 
-def _gen_area(buildingType: StrEnum, budget: int) -> int:
+def _gen_area(buildingType: Enum, budget: int) -> int:
     if buildingType == building.residential:
         return budget / random.triangular(1.75,2.50)
     elif buildingType == building.commercial:
@@ -18,7 +18,7 @@ def _gen_vol(sqFootage: int) -> int:
     volume = sqrt_number ** 3
     return math.floor(volume)
 
-def _gen_deadline(buildingType: StrEnum, sqFootage: int) -> int:
+def _gen_deadline(buildingType: Enum, sqFootage: int) -> int:
     if buildingType == building.residential:
         return random.triangular(6 // sqFootage, 12 // sqFootage)
     elif buildingType == building.commercial:
@@ -32,7 +32,7 @@ def _gen_deadline(buildingType: StrEnum, sqFootage: int) -> int:
 def _gen_buildtype() -> str:
     return random.choice(building)
 
-def _gen_efficiency(buildingType: StrEnum) -> StrEnum:
+def _gen_efficiency(buildingType: Enum) -> Enum:
     if buildingType == building.residential:
         return random.choices(efficiency,[.7,.2,.1])[0]
     elif buildingType == building.commercial:
@@ -42,7 +42,7 @@ def _gen_efficiency(buildingType: StrEnum) -> StrEnum:
     else:
         return
 
-def _gen_hvac_type(buildingType: StrEnum) -> StrEnum:
+def _gen_hvac_type(buildingType: Enum) -> Enum:
     if buildingType == building.residential:
         return random.choices(hvac,[.7,.175,.1,.025])[0]
     elif buildingType == building.commercial:
