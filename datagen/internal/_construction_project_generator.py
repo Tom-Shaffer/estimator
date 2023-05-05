@@ -5,11 +5,11 @@ import math
 
 def _gen_area(buildingType: Enum, budget: int) -> int:
     if buildingType == building.residential:
-        return budget / random.triangular(1.75,2.50)
+        return math.floor(budget / random.triangular(1.75,2.50))
     elif buildingType == building.commercial:
-        return budget / random.triangular(15,21)
+        return math.floor(budget / random.triangular(15,21))
     elif buildingType == building.industrial:
-        return budget / random.triangular(22,27)
+        return math.floor(budget / random.triangular(22,27))
     else:
         return
 
@@ -19,14 +19,18 @@ def _gen_vol(sqFootage: int) -> int:
     return math.floor(volume)
 
 def _gen_deadline(buildingType: Enum, sqFootage: int) -> int:
+    hours = 0
     if buildingType == building.residential:
-        return random.triangular(6 // sqFootage, 12 // sqFootage)
+        hours = random.triangular(sqFootage / 6, sqFootage / 12)
     elif buildingType == building.commercial:
-        return random.triangular(3 // sqFootage, 6 // sqFootage)
+        hours =  random.triangular(sqFootage / 4, sqFootage / 6)
     elif buildingType == building.industrial:
-        return random.triangular(1 // sqFootage, 4 // sqFootage)
+        hours = random.triangular(sqFootage / 1,sqFootage / 4)
     else:
         return
+    
+    return math.floor(hours / 168) + 6
+
     return
 
 def _gen_buildtype() -> str:
