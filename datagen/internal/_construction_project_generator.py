@@ -14,7 +14,6 @@ def _gen_area(buildingType: StrEnum, budget: int) -> int:
         return
 
 def _gen_vol(sqFootage: int) -> int:
-    # Need to call generate_cubic_feet function and return it's result
     return
 
 def _gen_deadline(buildingType: StrEnum, sqFootage: int) -> int:
