@@ -62,7 +62,7 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 model.fit(X_train, 
              y_train, 
              epochs=10000,
-             batch_size=16,
+             batch_size=100,
              callbacks=[cp_callback])
 
 # Save the model
