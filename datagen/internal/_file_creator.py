@@ -5,7 +5,7 @@ import math
 import os
 import json
 
-from _data_generator import _gen_area, _gen_vol, _gen_deadline, _gen_buildtype, _gen_efficiency, _gen_hvac_type
+from _construction_project_generator import _gen_area, _gen_vol, _gen_deadline, _gen_buildtype, _gen_efficiency, _gen_hvac_type
 
 def _generate_test_row(currentData: dict()):
     budget = math.floor(random.uniform(1,50))
