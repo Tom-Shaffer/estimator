@@ -15,8 +15,9 @@ X = df.drop("budget", axis=1)
 y = df["budget"]
 
 # Encode categorical variables
-desired_input_order = ['building_area', 'building_volume', 'deadline_months', 'building_type_industrial', 'building_type_commercial', 'building_type_residential', 'efficiency_level_high', 'efficiency_level_medium', 'efficiency_level_low', 'hvac_type_forced air', 'hvac_type_boiler', 'hvac_type_heat pump', 'hvac_type_geothermal']
+desired_input_order = ['building_area', 'building_volume', 'deadline_months', 'building_type_building.industrial', 'building_type_building.commercial', 'building_type_building.residential', 'efficiency_level_efficiency.high', 'efficiency_level_efficiency.medium', 'efficiency_level_efficiency.low', 'hvac_type_hvac.geothermal', 'hvac_type_hvac.heatpump', 'hvac_type_hvac.boiler', 'hvac_type_hvac.forcedair']
 X = pd.get_dummies(X, columns=["building_type", "efficiency_level", "hvac_type"])
+
 X = X.reindex(columns=desired_input_order)
 
 # Convert data types to int
@@ -60,7 +61,7 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 # Train the model
 model.fit(X_train, 
              y_train, 
-             epochs=1000,
+             epochs=10000,
              batch_size=16,
              callbacks=[cp_callback])
 
