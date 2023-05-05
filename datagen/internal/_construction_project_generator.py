@@ -1,6 +1,5 @@
 from enum import StrEnum
 import random
-from _math import generate_random_decimal, generate_cubic_feet
 from enums.constructionEnums import building, hvac, efficiency
 import math
 
