@@ -5,11 +5,11 @@ import math
 
 def _gen_area(buildingType: StrEnum, budget: int) -> int:
     if buildingType == building.residential:
-        return budget /  math.triangular(1.75,2.50)
+        return budget / random.triangular(1.75,2.50)
     elif buildingType == building.commercial:
-        return budget / math.triangular(15,21)
+        return budget / random.triangular(15,21)
     elif buildingType == building.industrial:
-        return budget / math.triangular(22,27)
+        return budget / random.triangular(22,27)
     else:
         return
 
