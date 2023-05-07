@@ -3,7 +3,7 @@ import tensorflow as tf
 import pandas as pd
 import os
 
-# Load the JSON data into a Python object
+# Load the JSON data into a Python object from working directory
 with open("jobs.json", "r") as f:
     data = json.load(f)
 
@@ -61,8 +61,8 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 # Train the model
 model.fit(X_train, 
              y_train, 
-             epochs=10000,
-             batch_size=100,
+             epochs=5,
+             batch_size=32,
              callbacks=[cp_callback])
 
 # Save the model

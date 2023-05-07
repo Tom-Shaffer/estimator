@@ -1,3 +1,4 @@
 env
 jobs.json
 node_modules
+*.pyc
