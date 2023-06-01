@@ -41,8 +41,6 @@ def _gen_deadline(buildingType: Enum, sqFootage: int) -> int:
     
     return math.floor(hours / 168 / 12) + 6
 
-    return
-
 def _gen_buildtype() -> str:
     return random.choice(list(building))
 
