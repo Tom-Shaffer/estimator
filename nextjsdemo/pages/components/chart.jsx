@@ -27,7 +27,6 @@ const options = {
 
 export default function Chart({ examples, target }) {
   const targetDatasetLabel = target ? target.building_type : null;
-  console.log(targetDatasetLabel);
 
   const data = {
     datasets: [
