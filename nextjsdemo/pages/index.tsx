@@ -9,6 +9,7 @@ const pathToDataSetJson = 'estimator/jobs.json'
 
 export default function Home() {
   const [jobsJson, setJobsJson] = useState([]);
+  const [targetPoint, setTargetPoint] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,10 +24,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
     <div style={{ display: 'flex' }}>
       <div className="input-container">
-        <Predict />
+        <Predict setTargetPoint={setTargetPoint}/>
       </div>
       <div className="chart-container">
-        <Chart examples={jobsJson}/>
+        <Chart examples={jobsJson} target={targetPoint}/>
       </div>
     </div>
     </main>
