@@ -29,10 +29,10 @@ export default function Predict() {
        Number(efficiencyLevel === "high"),
        Number(efficiencyLevel === "medium"),
        Number(efficiencyLevel === "low"),
-       Number(hvacType === "boiler"),
-       Number(hvacType === "forced air"),
+       Number(hvacType === "geothermal"),
        Number(hvacType === "heat pump"),
-       Number(hvacType === "geothermal")
+       Number(hvacType === "forced air"),
+       Number(hvacType === "boiler"),
       ]
     ])
 
