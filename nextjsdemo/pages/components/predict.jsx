@@ -1,10 +1,11 @@
+import { useState, useEffect }from 'react'
 import * as tf from '@tensorflow/tfjs'
 import '@tensorflow/tfjs-backend-webgl'
-import { useState, useEffect }from 'react'
+
 
 const modelJSONPath = 'estimator/model.json'
 
-export default function Predict() {
+export default function Predict({ setTargetPoint }) {
   const [buildingArea, setBuildingArea] = useState('');
   const [buildingVolume, setBuildingVolume] = useState('');
   const [deadlineMonths, setDeadlineMonths] = useState('');
@@ -36,8 +37,16 @@ export default function Predict() {
       ]
     ])
 
+    // Calculate the predicted cost of the inputted project
     const output = model.predict(input)
-    setPrediction(output.dataSync()[0])
+    const predictedCost = output.dataSync()[0];
+
+    // Update the prediction state
+    setPrediction(predictedCost);
+
+    // Update the target point state
+    const targetPoint = { x: Number(buildingArea), y: Number(predictedCost), building_type: buildingType };
+    setTargetPoint(targetPoint);
   }
 
   return (
