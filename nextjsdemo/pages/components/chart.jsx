@@ -16,11 +16,19 @@ ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 const options = {
   scales: {
     x: {
+        title:{
+          text: "Project Sq. Footage",
+          display: true,
+        },
         beginAtZero: true,
         maxPointsLimit: 100,
     },
     y: {
-      beginAtZero: true,
+        title:{
+          text: "Project Cost ($)",
+          display: true,
+        },
+        beginAtZero: true,
     },
   },
 
