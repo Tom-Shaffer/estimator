@@ -14,7 +14,7 @@ const pathToDataSetJson = 'estimator/jobs.json'
 ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 const options = {
-    scales: {
+  scales: {
     x: {
         beginAtZero: true,
         maxPointsLimit: 100,
@@ -23,6 +23,12 @@ const options = {
       beginAtZero: true,
     },
   },
+
+  plugins: {
+    legend: {
+        onClick: () => {},
+    }
+}
 };
 
 export default function Chart({ examples, target }) {
