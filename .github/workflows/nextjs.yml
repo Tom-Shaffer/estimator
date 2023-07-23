@@ -55,6 +55,8 @@ jobs:
         with:
           node-version: "16"
           cache: ${{ env.manager }} # Use the package manager selected in the previous step
+      - name: Install Next.js
+        run: ${{ env.runner }} ${{ env.command }} next
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
