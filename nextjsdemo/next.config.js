@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/estimator', 
   reactStrictMode: true,
   publicRuntimeConfig: {
-    staticFolder: '/public', // Change this to the correct path for your project
+    staticFolder: '/public',
   },
 }
 
