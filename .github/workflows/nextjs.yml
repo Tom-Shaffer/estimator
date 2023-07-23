@@ -72,11 +72,11 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('estimator/nextjsdemo/yarn.lock', 'estimator/nextjsdemo/package-lock.json') }}-${{ hashFiles('estimator/nextjsdemo/**.[jt]s', 'estimator/nextjsdemo/**.[jt]sx') }}
           restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('estimator/nextjsdemo/yarn.lock', 'estimator/nextjsdemo/package-lock.json') }}-
       - name: Install dependencies
-        run: ${{ env.runner }} ${{ env.command }} # Use the correct package manager and command
+        run: npm ${{ env.command }} # Use the correct package manager and command
       - name: Build with Next.js
-        run: ${{ env.runner }} next build # Use the correct package manager runner
+        run: npm next build # Use the correct package manager runner
       - name: Static HTML export with Next.js
-        run: ${{ env.runner }} next export # Use the correct package manager runner
+        run: npm next export # Use the correct package manager runner
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
