@@ -30,10 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        working-directory: ./nextjsdemo
         uses: actions/checkout@v3
       - name: Detect package manager
-        working-directory: ./nextjsdemo
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
@@ -51,13 +49,11 @@ jobs:
             exit 1
           fi
       - name: Setup Node
-        working-directory: ./nextjsdemo
         uses: actions/setup-node@v3
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        working-directory: ./nextjsdemo
         uses: actions/configure-pages@v3
         with:
           # Automatically inject basePath in your Next.js configuration file and disable
@@ -66,7 +62,6 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
       - name: Restore cache
-        working-directory: ./nextjsdemo
         uses: actions/cache@v3
         with:
           path: |
@@ -77,19 +72,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        working-directory: ./nextjsdemo
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        working-directory: ./nextjsdemo
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
-        working-directory: ./nextjsdemo
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
-        working-directory: ./nextjsdemo
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./out
+          path: ./nextjsdemo/out
 
   # Deployment job
   deploy:
