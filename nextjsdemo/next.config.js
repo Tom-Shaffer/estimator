@@ -2,9 +2,7 @@
 const nextConfig = {
   basePath: '/estimator', 
   reactStrictMode: true,
-  publicRuntimeConfig: {
-    staticFolder: '/public',
-  },
+  assetPrefix: '/public/'
 }
 
 module.exports = nextConfig
