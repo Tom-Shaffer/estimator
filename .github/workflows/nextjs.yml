@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Change to Next.js project directory
+        run: cd estimator/nextjsdemo
       - name: Detect package manager
         id: detect-package-manager
         run: |
