@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Change to Next.js project directory
-        run: cd estimator/nextjsdemo
+        run: cd nextjsdemo
       - name: Detect package manager
         id: detect-package-manager
         run: |
