@@ -31,8 +31,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Change to Next.js project directory
-        run: cd nextjsdemo
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -74,7 +72,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
