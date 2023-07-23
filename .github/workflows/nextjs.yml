@@ -75,12 +75,14 @@ jobs:
         run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Post-Build with Next.js
+        run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next postbuild
       - name: Static HTML export with Next.js
         run: cd nextjsdemo && ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./nextjsdemo/.next
+          path: ./nextjsdemo/out
 
   # Deployment job
   deploy:
