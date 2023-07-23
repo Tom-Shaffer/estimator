@@ -71,15 +71,22 @@ export default function Predict({ examples, setTargetPoint }) {
   };
 
   // Randomly select 2 jobs for each category as presets
-  const presetProjects = getRandomPresets(examples, 2, 'building.residential');
-  presetProjects.push(...getRandomPresets(examples, 2, 'building.commercial'));
-  presetProjects.push(...getRandomPresets(examples, 2, 'building.industrial'));
+  const presetProjects = [];
+  const residentialPresets = getRandomPresets(examples, 2, 'building.residential');
+  const commercialPresets = getRandomPresets(examples, 2, 'building.commercial');
+  const industrialPresets = getRandomPresets(examples, 2, 'building.industrial');
+  if (Array.isArray(residentialPresets))
+    presetProjects.push(...residentialPresets);
+  if (Array.isArray(commercialPresets))
+    presetProjects.push(...commercialPresets);
+  if (Array.isArray(industrialPresets))
+    presetProjects.push(...industrialPresets);
 
   function getRandomPresets(jobs, count, category) {
     const shuffled = jobs
-      .filter((job) => job.building_type === category)
-      .sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count).map((job, index) => ({
+      ?.filter((job) => job.building_type === category)
+      ?.sort(() => 0.5 - Math.random());
+    return shuffled?.slice(0, count).map((job, index) => ({
       label: `random ${category.replace('building.', '')} job ${index + 1}`,
       actualCost: job.budget,
       buildingArea: job.building_area,

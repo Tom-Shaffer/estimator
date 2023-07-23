@@ -58,7 +58,7 @@ export default function Chart({ examples, target }) {
       {
         label: 'Residential Job',
         data: examples
-          .filter((job) => job.building_type === 'building.residential')
+          ?.filter((job) => job.building_type === 'building.residential')
           .slice(0, 500)
           .map((job) => ({ x: job.building_area, y: job.budget })),
         backgroundColor: 'rgba(255, 99, 132, 1)',
@@ -67,7 +67,7 @@ export default function Chart({ examples, target }) {
       {
         label: 'Commercial Job',
         data: examples
-          .filter((job) => job.building_type === 'building.commercial')
+          ?.filter((job) => job.building_type === 'building.commercial')
           .slice(0, 500)
           .map((job) => ({ x: job.building_area, y: job.budget })),
         backgroundColor: 'rgba(54, 162, 235, 1)',
@@ -76,7 +76,7 @@ export default function Chart({ examples, target }) {
       {
         label: 'Industrial Job',
         data: examples
-          .filter((job) => job.building_type === 'building.industrial')
+          ?.filter((job) => job.building_type === 'building.industrial')
           .slice(0, 500)
           .map((job) => ({ x: job.building_area, y: job.budget })),
         backgroundColor: 'rgba(75, 192, 192, 1)',
