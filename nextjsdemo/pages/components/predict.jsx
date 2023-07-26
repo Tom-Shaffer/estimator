@@ -128,6 +128,7 @@ export default function Predict({ examples, setTargetPoint }) {
             Building area:
             <input
               type="number"
+              min=0
               name="building_area"
               value={buildingArea}
               onChange={(e) => setBuildingArea(e.target.value)}
@@ -138,6 +139,7 @@ export default function Predict({ examples, setTargetPoint }) {
             Building volume:
             <input
               type="number"
+              min=0
               name="building_volume"
               value={buildingVolume}
               onChange={(e) => setBuildingVolume(e.target.value)}
@@ -148,6 +150,7 @@ export default function Predict({ examples, setTargetPoint }) {
             Deadline months:
             <input
               type="number"
+              min=0
               name="deadline_months"
               value={deadlineMonths}
               onChange={(e) => setDeadlineMonths(e.target.value)}
